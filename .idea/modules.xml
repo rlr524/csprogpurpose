@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/WeekOne.iml" filepath="$PROJECT_DIR$/WeekOne/WeekOne.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekOne/WeekOneAssignments/WeekOneAssignments.iml" filepath="$PROJECT_DIR$/WeekOne/WeekOneAssignments/WeekOneAssignments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekThree/WeekThree.iml" filepath="$PROJECT_DIR$/WeekThree/WeekThree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeekTwo/WeekTwo.iml" filepath="$PROJECT_DIR$/WeekTwo/WeekTwo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/csprogpurpose.iml" filepath="$PROJECT_DIR$/.idea/csprogpurpose.iml" />
+    </modules>
+  </component>
+</project>

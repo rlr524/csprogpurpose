@@ -1,9 +1,14 @@
 public class PokerHand {
-    public static void main(String[] args) {
-        String[] suit = {"Clubs", "Diamonds", "Hearts", "Spades"};
-        String[] rank = {"Ace", "King", "Queen", "Jack", "Ten", "Nine", "Eight", "Seven", "Six", "Five", "Four", "Three", "Two"};
+    static String[] suit = {"Clubs", "Diamonds", "Hearts", "Spades"};
+    static String[] rank = {"Ace", "King", "Queen", "Jack", "Ten", "Nine", "Eight", "Seven", "Six", "Five", "Four", "Three", "Two"};
+    static String[] deck = new String[suit.length * rank.length];
 
-        String[] deck = new String[suit.length * rank.length];
+    public static void main(String[] args) {
+        playHand(args);
+        cards();
+    }
+
+    public static void playHand(String[] args) {
         for (int i = 0; i < rank.length; i++) {
             for (int j = 0; j < suit.length; j++) {
                 deck[suit.length * i + j] = rank[i] + " of " + suit[j];
@@ -32,5 +37,23 @@ public class PokerHand {
         for (int i = 0; i < deckSize; i++) {
             System.out.println(deck[perm[i]] + " ");
         }
+    }
+
+    public static void cards() {
+        for (int i = 0; i < rank.length; i++) {
+            for (int j = 0; j < suit.length; j++) {
+                deck[suit.length * i + j] = rank[i] + " of " + suit[j];
+            }
+        }
+        System.out.println(java.util.Arrays.toString(deck));
+
+        int n = deck.length;
+        for (int i = 0; i < n; i++) {
+            int r = i + (int) (Math.random() * (n-i));
+            String temp = deck[i];
+            deck[i] = deck[r];
+            deck[r] = temp;
+        }
+        System.out.println(java.util.Arrays.toString(deck));
     }
 }
