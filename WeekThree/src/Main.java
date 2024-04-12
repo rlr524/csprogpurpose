@@ -10,11 +10,12 @@ public class Main {
         System.out.println(result);
     }
 
-    public static double findMax(double a[], double n) {
+    public static double findMax(double[] a, double n) {
         double max = Double.NEGATIVE_INFINITY;
         for (int i = 0; i < n; i++) {
             if (a[i] > max) {
                 max = a[1];
+                break;
             }
         }
         return max;

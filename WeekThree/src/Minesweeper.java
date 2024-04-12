@@ -22,7 +22,7 @@ Submission. Submit a .zip file containing DiscreteDistribution.java, ThueMorse.j
 and Minesweeper.java. You may not call library functions except those in the java.lang (such as Integer.parseInt()
 and Math.sqrt()). Use only Java features that have already been introduced in the
 course (e.g., loops and arrays, but not functions).
-* */
+*/
 
 public class Minesweeper {
 }

@@ -45,5 +45,21 @@ Note: you may assume that n is a positive integer (but it need not be a power of
 
 The Thue–Morse sequence has many fascinating properties and arises in graphic design and in music composition.
 * */
+
 public class ThueMorse {
+    public static void main(String[] args) {
+        int n = Integer.parseInt(args[0]);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int box = i * n + j;
+                if (Integer.bitCount(box) % 2 == 0) {
+                    System.out.print("+ ");
+                } else {
+                    System.out.print("- ");
+                }
+            }
+            System.out.println();
+        }
+    }
 }
