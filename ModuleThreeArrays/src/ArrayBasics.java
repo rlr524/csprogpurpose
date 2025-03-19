@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Main {
+public class ArrayBasics {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
         
@@ -50,5 +50,16 @@ public class Main {
             b[i] = a[i];
         }
         System.out.println("Array b = " + Arrays.toString(b));
+        
+        // Setting array values at compile time
+        String[] SUITS = { "Clubs", "Diamonds", "Hearts", "Spades" };
+        String[] RANKS = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "Spades" };
+        
+        int i = (int) (Math.random() * RANKS.length);
+        int j = (int) (Math.random() * SUITS.length);
+
+        System.out.println(i);
+        System.out.println(j);
+        System.out.println(RANKS[i] + " of " + SUITS[j]);
     }
 }
