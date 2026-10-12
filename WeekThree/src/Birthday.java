@@ -1,19 +1,17 @@
 /*
-Birthday problem. Suppose that people enter a room one at a time. How people must enter until two share a birthday?
-Counterintuitively, after 23 people enter the room, there is approximately a 50–50 chance that two share a
-birthday. This phenomenon is known as the birthday problem or birthday paradox.
-Write a program Birthday.java that takes two integer command-line arguments n and trials and performs the following
-experiment, trials times:
+Birthday problem. Suppose that people enter a room one at a time. How many people must enter until 
+two share a birthday? Counterintuitively, after 23 people enter the room, there is approximately a 
+50–50 chance that two share a birthday. This phenomenon is known as the birthday problem or 
+birthday paradox. Write a program Birthday.java that takes two integer command-line arguments, n 
+and trials, and performs the following experiment [trials] times:
 
-Choose a birthday for the next person, uniformly at random between 0 and n−1.
-Have that person enter the room.
-If that person shares a birthday with someone else in the room, stop; otherwise repeat.
+- Choose a birthday for the next person, uniformly at random between 0 and n−1.
+- Have that person enter the room.
+- If that person shares a birthday with someone else in the room, stop; otherwise repeat.
 In each experiment, count the number of people that enter the room. Print a table that summarizes
-the results (the count i, the number of times that exactly 'i' people enter the room, and the fraction of
-times that i or fewer people enter the room) for each possible value of i from 1 until the fraction
-reaches (or exceeds) 50%.
-sampling from a discrete distribution
-~/Desktop/arrays> java Birthday 365 1000000
+the results (the count i, the number of times that exactly 'i' people enter the room, and the 
+fraction of times that i or fewer people enter the room) for each possible value of i from 1 until 
+the fraction reaches (or exceeds) 50%.
 1	0	0.0
 2	2710	0.00271
 3	5547	0.008257
@@ -38,7 +36,6 @@ sampling from a discrete distribution
 22	32020	0.475281
 23	31667	0.506948
 
-~/Desktop/arrays> java Birthday 31 1000000
 1	0	0.0
 2	32270	0.03227
 3	62580	0.09485
@@ -46,10 +43,45 @@ sampling from a discrete distribution
 5	105596	0.288028
 6	114427	0.402455
 7	115494	0.517949
-The birthday problem arises in many computer science applications, including hashing, cryptographic attacks,
-and testing random number generators.
+The birthday problem arises in many computer science applications, including hashing, cryptographic 
+attacks, and testing random number generators.
 
 * */
 
 public class Birthday {
+    public static void main(String[] args) {
+        int n = Integer.parseInt(args[0]); // The number of possible birthdays, up to 365
+        int trials = Integer.parseInt(args[1]);
+        
+        int[] counts = new int[n + 2];
+        
+        for (int trial = 0; trial < trials; trial++) {
+            boolean[] seen = new boolean[n];
+            int people = 0;
+            boolean match = false;
+            
+            while (!match) {
+                int birthday = (int) (Math.random() * n);
+                people++;
+                
+                if (seen[birthday]) {
+                    match = true;
+                } else {
+                    seen[birthday] = true;
+                }
+            }
+            
+            counts[people]++;
+        }
+
+        int cumulativeCount = 0;
+        for (int i = 1; i < counts.length; i++) {
+            cumulativeCount += counts[i];
+            double fraction = (double) cumulativeCount / trials;
+            System.out.printf("%d %d %.6f%n", i, counts[i], fraction);
+            if (fraction >= 0.5) {
+                break;
+            }
+        }
+    }
 }

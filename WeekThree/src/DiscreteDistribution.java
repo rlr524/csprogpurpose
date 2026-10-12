@@ -34,25 +34,28 @@ In probability theory, this is known as sampling from a discrete distribution.
 
 public class DiscreteDistribution {
     public static void main(String[] args) {
-        int n = args.length;
-        int [] a = new int [n];
-        for (int i = 0; i < n; i++) {
-            a[i] = Integer.parseInt(args[i]);
-        }
-        int [] s = new int [n];
-        for (int i = 1; i < n; i++) {
-            s[0] = 0;
-            s[i] = s[i-1] + a[i];
-        }
-        for (int m = 0; m < a[0]; m++) {
-            int index = 1;
-            int r = (int) (s[n-1] * Math.random());
-            for (int i = 1; i < n; i++) {
-                if (s[i-1] <= r && r < s[i])
-                    index = i;
+        int m = Integer.parseInt(args[0]);
+        int n = args.length - 1;
+
+        // cumulative[i] is the total weight of the first i entries.
+        long[] cumulative = new long[n + 1];
+        for (int i = 1; i <= n; i++) {
+            int weight = Integer.parseInt(args[i]);
+            if (weight <= 0) {
+                throw new IllegalArgumentException("Weights must be positive.");
             }
-            System.out.printf("%d ", index);
+            cumulative[i] = cumulative[i - 1] + weight;
         }
-        System.out.println("\n");
+
+        for (int draw = 0; draw < m; draw++) {
+            long r = (long) (cumulative[n] * Math.random());
+            int index = 1;
+            while (r >= cumulative[index]) {
+                index++;
+            }
+            System.out.print(index);
+            if (draw < m - 1) System.out.print(" ");
+        }
+        System.out.println();
     }
 }
